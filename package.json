@@ -1,6 +1,6 @@
 {
-  "name": "goit-react-hw-05-movie",
-  "homepage": "https://volodya1989.github.io/goit-react-hw-05-movie/",
+  "name": "goit-react-hw-05-movies",
+  "homepage": "https://volodya1989.github.io/goit-react-hw-05-movies/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +14,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
+    "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
