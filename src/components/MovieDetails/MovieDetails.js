@@ -1,5 +1,6 @@
+import { Suspense } from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import { getMovieDetails } from "../../api/moviesAPI";
 import Loader from "../Loader";
 
@@ -7,6 +8,7 @@ import {
   StyledText,
   StyledDetails,
   StyledGenresTitle,
+  StyledList,
 } from "./MovieDetails.styled";
 const MovieDetails = () => {
   const [details, setDetails] = useState({});
@@ -22,8 +24,8 @@ const MovieDetails = () => {
       const response = await getMovieDetails(movieId);
       const resp = await response.data;
       setDetails(resp);
-      console.log("details", details);
-      console.log("resp", resp);
+      // console.log("details", details);
+      // console.log("resp", resp);
       setTimeout(() => {
         if (Object.keys(details).length === 0) {
           setIsLoaded(true);
@@ -64,10 +66,13 @@ const MovieDetails = () => {
             </div>
           </StyledDetails>
           <p>Addtitonal Information</p>
-          <ul>
-            <li>Cast</li>
-            <li>Review</li>
-          </ul>
+          <StyledList>
+            <Link to="cast">Cast</Link> <br />
+            <Link to="reviews">Reviews</Link>
+          </StyledList>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </div>

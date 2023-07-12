@@ -17,3 +17,10 @@ export async function getTrandingMovies() {
 export async function getMovieDetails(movie_id) {
   return await axios.get(`${BASE_URL}movie/${movie_id}${PARAMS}`, config);
 }
+
+export async function getMovieReviews(movie_id) {
+  return await axios.get(
+    `${BASE_URL}movie/${movie_id}/reviews${PARAMS}&page=1`,
+    config
+  );
+}

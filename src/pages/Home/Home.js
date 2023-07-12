@@ -7,7 +7,6 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    console.log("rendered");
     onGettingMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -17,8 +16,8 @@ const Home = () => {
       const response = await getTrandingMovies();
       const resp = await response.data.results;
       setMovies(resp);
-      console.log("movies", movies);
-      console.log("resp", resp);
+      // console.log("movies", movies);
+      // console.log("resp", resp);
     } catch (e) {
       console.log(e);
     }
