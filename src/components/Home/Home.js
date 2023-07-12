@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import getTrandingMovies from "../../api/moviesAPI";
+import { getTrandingMovies } from "../../api/moviesAPI";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
