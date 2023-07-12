@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import SharedLayout from "../SharedLayout/index";
-
+import Home from "components/Home";
+// 835adde72cb6c79039108cc14f767829
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<div>Home</div>} />
+          <Route index element={<Home />} />
           <Route path="/movies" element={<div>Movies</div>} />
           <Route path="/movies/:movieId" element={<div>Movies</div>}>
             <Route path="cast" element={<div>Movie Details/Cast</div>} />
