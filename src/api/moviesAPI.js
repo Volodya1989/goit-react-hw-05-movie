@@ -15,7 +15,5 @@ export async function getTrandingMovies() {
 }
 
 export async function getMovieDetails(movie_id) {
-  console.log("getMovieDetails", `${BASE_URL}movie/${movie_id}${PARAMS}`);
-  // https://api.themoviedb.org/3/movie/{movie_id}
   return await axios.get(`${BASE_URL}movie/${movie_id}${PARAMS}`, config);
 }
