@@ -10,4 +10,11 @@ export const StyledGenresTitle = styled.h4`
 export const StyledDetails = styled.div`
   display: flex;
   gap: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #888;
+`;
+export const StyledList = styled.ul`
+
+  padding-bottom: 10px;
+  border-bottom: 1px solid #888;
 `;
