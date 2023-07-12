@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import {StyledLink} from "./SharedLayout.styled";
 
 const SharedLayout = () => {
   return (
@@ -7,12 +7,12 @@ const SharedLayout = () => {
       <nav>
         <ul>
           <li>
-            <NavLink to="/" end>
+            <StyledLink to="/" end>
               Home
-            </NavLink>
+            </StyledLink>
           </li>
           <li>
-            <NavLink to="/movies">Movies</NavLink>
+            <StyledLink to="/movies">Movies</StyledLink>
           </li>
         </ul>
       </nav>
