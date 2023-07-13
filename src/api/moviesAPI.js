@@ -24,3 +24,11 @@ export async function getMovieReviews(movie_id) {
     config
   );
 }
+
+export async function getMovieCast(movie_id) {
+  console.log(`${BASE_URL}movie/${movie_id}/credits${PARAMS}`);
+  return await axios.get(
+    `${BASE_URL}movie/${movie_id}/credits${PARAMS}`,
+    config
+  );
+}
