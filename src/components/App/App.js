@@ -20,11 +20,7 @@ const Cast = lazy(() =>
     return module;
   })
 );
-// const SearchMovie = lazy(() =>
-//   import("../SearchMovie").then((module) => {
-//     return module;
-//   })
-// );
+
 const App = () => {
   return (
     <div>
@@ -36,7 +32,7 @@ const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<div>404 Not Found</div>} />
+          <Route path="*" element={<div>404 Page Not Found</div>} />
         </Route>
       </Routes>
     </div>

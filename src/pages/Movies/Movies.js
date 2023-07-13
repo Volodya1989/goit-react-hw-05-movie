@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { Link, useSearchParams, useLocation } from "react-router-dom";
-import SearchMovie from "components/SearchMovie";
 import Loader from "../../components/Loader";
 import { getMovieOnSearch } from "../../api/moviesAPI";
 import { Container } from "./Movies.styled";
 
+const SearchMovie = lazy(() =>
+  import("components/SearchMovie").then((module) => {
+    return module;
+  })
+);
 const Movies = () => {
   const [queryParam, setQueryParam] = useState("");
   const [movies, setMovie] = useState("");
@@ -47,7 +51,7 @@ const Movies = () => {
   };
   return (
     <div>
-      <SearchMovie onSubmit={onSubmit} query={query} />
+      <SearchMovie onSubmit={onSubmit}/>
       {!isLoaded && queryParam && <Loader />}
 
       {isLoaded && (

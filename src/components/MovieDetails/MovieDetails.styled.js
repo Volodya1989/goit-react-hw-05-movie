@@ -54,6 +54,7 @@ export const StyledButton = styled.button`
 `;
 
 export const Container = styled.div`
+  margin-top: 50px;
   margin-left: 100px;
   margin-right: 100px;
 `;
