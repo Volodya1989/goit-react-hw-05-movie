@@ -14,7 +14,7 @@ export const StyledDetails = styled.div`
   border-bottom: 1px solid #888;
 `;
 export const StyledList = styled.ul`
-
+  list-style: none;
   padding-bottom: 10px;
   border-bottom: 1px solid #888;
 `;
