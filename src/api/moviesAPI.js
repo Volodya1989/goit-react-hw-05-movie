@@ -32,3 +32,14 @@ export async function getMovieCast(movie_id) {
     config
   );
 }
+//https://api.themoviedb.org/3/search/movie/query=batman?language=en-US&page=1
+// https://api.themoviedb.org/3/search/movie?query=batman&include_adult=false&language=en-US&page=1'
+export async function getMovieOnSearch(searchParam) {
+  console.log(
+    `${BASE_URL}search/movie?query=${searchParam}&include_adult=false&language=en-US&page=1`
+  );
+  return await axios.get(
+    `${BASE_URL}search/movie?query=${searchParam}&include_adult=false&language=en-US&page=1`,
+    config
+  );
+}
