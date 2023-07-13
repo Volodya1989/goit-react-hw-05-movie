@@ -2,7 +2,7 @@ import { Suspense, useRef } from "react";
 import { useState, useEffect } from "react";
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { getMovieDetails } from "../../api/moviesAPI";
-import Loader from "../Loader";
+import Loader from "../../components/Loader";
 import { BiSolidLeftArrow } from "react-icons/bi";
 
 import {
