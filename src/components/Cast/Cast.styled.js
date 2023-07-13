@@ -17,9 +17,13 @@ export const StyledImg = styled.img`
 `;
 export const StyledList = styled.ul`
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 15px;
   padding-bottom: 10px;
+  margin-right: 100px;
+  margin-left: 100px;
+  padding-left: 0;
 `;
 export const StyledItem = styled.li`
   list-style: none;

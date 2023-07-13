@@ -1,22 +1,27 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { StyledLink } from "./SharedLayout.styled";
+import {
+  StyledLink,
+  StyledHeader,
+  StyledList,
+  StyledItem,
+} from "./SharedLayout.styled";
 
 const SharedLayout = () => {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
+      <StyledHeader>
+        <StyledList>
+          <StyledItem>
             <StyledLink to="/" end>
               Home
             </StyledLink>
-          </li>
-          <li>
+          </StyledItem>
+          <StyledItem>
             <StyledLink to="/movies">Movies</StyledLink>
-          </li>
-        </ul>
-      </nav>
+          </StyledItem>
+        </StyledList>
+      </StyledHeader>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>

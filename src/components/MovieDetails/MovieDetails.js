@@ -1,19 +1,25 @@
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { useState, useEffect } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { getMovieDetails } from "../../api/moviesAPI";
 import Loader from "../Loader";
+import { BiSolidLeftArrow } from "react-icons/bi";
 
 import {
   StyledText,
   StyledDetails,
   StyledGenresTitle,
   StyledList,
+  StyledButton,
+  StyledLink,
+  Container,
 } from "./MovieDetails.styled";
 const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkRef = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     onGettingMoveDetails();
@@ -24,8 +30,7 @@ const MovieDetails = () => {
       const response = await getMovieDetails(movieId);
       const resp = await response.data;
       setDetails(resp);
-      // console.log("details", details);
-      // console.log("resp", resp);
+
       setTimeout(() => {
         if (Object.keys(details).length === 0) {
           setIsLoaded(true);
@@ -37,11 +42,17 @@ const MovieDetails = () => {
   };
 
   return (
-    <div>
+    <Container>
       {!isLoaded && <Loader />}
 
       {isLoaded && (
         <>
+          <StyledLink to={backLinkRef.current}>
+            <StyledButton type="button">
+              <BiSolidLeftArrow />
+              Go Back
+            </StyledButton>
+          </StyledLink>
           <StyledDetails>
             <img
               src={`https://image.tmdb.org/t/p/w200${details.poster_path}`}
@@ -75,7 +86,7 @@ const MovieDetails = () => {
           </Suspense>
         </>
       )}
-    </div>
+    </Container>
   );
 };
 
