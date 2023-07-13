@@ -24,32 +24,32 @@ const Movies = () => {
     if (query === "" || location.search === 0) {
       return;
     }
-    onGettingMovies(query);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [queryParam, location]);
-
-  const onGettingMovies = async (queryParam) => {
-    try {
-      const response = await getMovieOnSearch(queryParam);
-      const resp = await response.data.results;
-      setMovie(resp);
-      if (resp.length === 0) {
-        setIsLoaded(true);
+    const onGettingMovies = async (queryParam) => {
+      try {
+        const response = await getMovieOnSearch(queryParam);
+        const resp = await response.data.results;
         setMovie(resp);
-        return Notiflix.Notify.failure(
-          "No movies were found. Please try again."
-        );
-      }
-      setTimeout(() => {
-        if (resp.length !== 0) {
+        if (resp.length === 0) {
           setIsLoaded(true);
           setMovie(resp);
+          return Notiflix.Notify.failure(
+            "No movies were found. Please try again."
+          );
         }
-      }, 500);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+        setTimeout(() => {
+          if (resp.length !== 0) {
+            setIsLoaded(true);
+            setMovie(resp);
+          }
+        }, 500);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    onGettingMovies(query);
+  }, [queryParam,location.search, query]);
+
+  
 
   const onSubmit = (queryParam) => {
     setSearchParams({});
