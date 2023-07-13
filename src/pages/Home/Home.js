@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Container } from "./Home.styled";
 
 import { getTrandingMovies } from "../../api/moviesAPI";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     onGettingMovies();
@@ -17,7 +18,6 @@ const Home = () => {
       const response = await getTrandingMovies();
       const resp = await response.data.results;
       setMovies(resp);
-
     } catch (e) {
       console.log(e);
     }
@@ -30,7 +30,9 @@ const Home = () => {
         {movies.map((movie) => {
           return (
             <li key={movie.id}>
-              <Link to={`movies/${movie.id}`}>{movie.original_title}</Link>
+              <Link to={`movies/${movie.id}`} state={{ from: location }}>
+                {movie.original_title}
+              </Link>
             </li>
           );
         })}

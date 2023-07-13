@@ -30,8 +30,7 @@ const MovieDetails = () => {
       const response = await getMovieDetails(movieId);
       const resp = await response.data;
       setDetails(resp);
-      // console.log("details", details);
-      // console.log("resp", resp);
+
       setTimeout(() => {
         if (Object.keys(details).length === 0) {
           setIsLoaded(true);

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { Container, Form, Input, ButtonStyled } from "./SearchMovie.styled";
 import { BsSearch } from "react-icons/bs";
-// import Notiflix from "notiflix";
+import Notiflix from "notiflix";
 
 const SearchMovie = ({ onSubmit }) => {
   const oldQuery = useRef(null);
@@ -26,7 +26,7 @@ const SearchMovie = ({ onSubmit }) => {
     e.preventDefault();
     if (queryParam.trim().length === 0) {
       setQueryParam(queryParam);
-      return alert("Please type in some search key word");
+      return Notiflix.Notify.failure("Please type in some search key word");
     }
 
     if (
@@ -35,8 +35,8 @@ const SearchMovie = ({ onSubmit }) => {
     ) {
       reset();
 
-      return alert(
-        "This is the same query that you have already  entered. Please type new one for new results."
+      return Notiflix.Notify.failure(
+        "This is the same movie that you have already entered. Please type new one for new results."
       );
     }
     oldQuery.current = queryParam.trim();

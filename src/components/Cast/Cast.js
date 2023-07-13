@@ -19,7 +19,6 @@ const Cast = () => {
       const response = await getMovieCast(movieId);
       const resp = await response;
       setDetails(resp.data.cast);
-      console.log("resp.data", resp.data);
       setTimeout(() => {
         if (Object.keys(cast).length === 0) {
           setIsLoadedCast(true);
