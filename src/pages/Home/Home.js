@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Container } from "./Home.styled";
 
 import { getTrandingMovies } from "../../api/moviesAPI";
 
@@ -24,7 +25,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>Tranding Today</h1>
       <ul>
         {movies.map((movie) => {
@@ -35,7 +36,7 @@ const Home = () => {
           );
         })}
       </ul>
-    </div>
+    </Container>
   );
 };
 
