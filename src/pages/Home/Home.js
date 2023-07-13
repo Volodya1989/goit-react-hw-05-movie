@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Container } from "./Home.styled";
+import { useLocation } from "react-router-dom";
+import { Container, StyledList, Item, StyledLink, Span } from "./Home.styled";
 
 import { getTrandingMovies } from "../../api/moviesAPI";
+import { FcFilmReel } from "react-icons/fc";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -26,17 +27,20 @@ const Home = () => {
   return (
     <Container>
       <h1>Tranding Today</h1>
-      <ul>
+      <StyledList>
         {movies.map((movie) => {
           return (
-            <li key={movie.id}>
-              <Link to={`movies/${movie.id}`} state={{ from: location }}>
+            <Item key={movie.id}>
+              <StyledLink to={`movies/${movie.id}`} state={{ from: location }}>
+                <Span>
+                  <FcFilmReel />
+                </Span>
                 {movie.original_title}
-              </Link>
-            </li>
+              </StyledLink>
+            </Item>
           );
         })}
-      </ul>
+      </StyledList>
     </Container>
   );
 };

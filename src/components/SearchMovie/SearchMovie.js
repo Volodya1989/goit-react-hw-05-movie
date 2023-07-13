@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 import { Container, Form, Input, ButtonStyled } from "./SearchMovie.styled";
 import { BsSearch } from "react-icons/bs";
@@ -67,6 +67,6 @@ const SearchMovie = ({ onSubmit }) => {
 
 export default SearchMovie;
 
-// SearchMovie.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+SearchMovie.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
