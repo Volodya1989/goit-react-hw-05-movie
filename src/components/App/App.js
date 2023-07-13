@@ -4,22 +4,10 @@ import SharedLayout from "../SharedLayout/index";
 
 const Home = lazy(() => import("pages/Home"));
 const Movies = lazy(() => import("pages/Movies"));
+const MovieDetails = lazy(() => import("pages/MovieDetails"));
+const Reviews = lazy(() => import("../Reviews"));
+const Cast = lazy(() => import("../Cast"));
 
-const MovieDetails = lazy(() =>
-  import("../../pages/MovieDetails").then((module) => {
-    return module;
-  })
-);
-const Reviews = lazy(() =>
-  import("../Reviews").then((module) => {
-    return module;
-  })
-);
-const Cast = lazy(() =>
-  import("../Cast").then((module) => {
-    return module;
-  })
-);
 
 const App = () => {
   return (
@@ -32,8 +20,8 @@ const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
