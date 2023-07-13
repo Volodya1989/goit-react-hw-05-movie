@@ -1,8 +1,10 @@
 import { useState, useEffect, lazy } from "react";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { getMovieOnSearch } from "../../api/moviesAPI";
-import { Container } from "./Movies.styled";
+import { Container, StyledList, Item, StyledLink, Span } from "./Movies.styled";
+import Notiflix from "notiflix";
+import { FcFilmReel } from "react-icons/fc";
 
 const SearchMovie = lazy(() =>
   import("components/SearchMovie").then((module) => {
@@ -19,10 +21,9 @@ const Movies = () => {
   const query = searchParams.get("query") ?? "";
 
   useEffect(() => {
-    if (queryParam === "" && location.search === 0) {
+    if (query === "" || location.search === 0) {
       return;
     }
-
     onGettingMovies(query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryParam, location]);
@@ -32,6 +33,13 @@ const Movies = () => {
       const response = await getMovieOnSearch(queryParam);
       const resp = await response.data.results;
       setMovie(resp);
+      if (resp.length === 0) {
+        setIsLoaded(true);
+        setMovie(resp);
+        return Notiflix.Notify.failure(
+          "No movies were found. Please try again."
+        );
+      }
       setTimeout(() => {
         if (resp.length !== 0) {
           setIsLoaded(true);
@@ -51,23 +59,26 @@ const Movies = () => {
   };
   return (
     <div>
-      <SearchMovie onSubmit={onSubmit}/>
+      <SearchMovie onSubmit={onSubmit} />
       {!isLoaded && queryParam && <Loader />}
 
       {isLoaded && (
         <>
           <Container>
-            <ul>
+            <StyledList>
               {movies.map((movie) => {
                 return (
-                  <li key={movie.id}>
-                    <Link to={`${movie.id}`} state={{ from: location }}>
+                  <Item key={movie.id}>
+                    <StyledLink to={`${movie.id}`} state={{ from: location }}>
+                      <Span>
+                        <FcFilmReel />
+                      </Span>
                       {movie.original_title}
-                    </Link>
-                  </li>
+                    </StyledLink>
+                  </Item>
                 );
               })}
-            </ul>
+            </StyledList>
           </Container>
         </>
       )}
